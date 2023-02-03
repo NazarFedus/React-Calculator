@@ -18,6 +18,12 @@ function App() {
     inputRef.current.focus();
   }, [manipulation])
 
+  useEffect(() => {
+    setCurrentValue(result)
+    inputRef.current.value = result;
+
+  }, [result])
+
   function clear(){
     setManipulation('')
     inputRef.current.value = '';
@@ -47,7 +53,7 @@ function App() {
     setManipulation('devide')
   };
 
-  function equel(e) {
+  function equal(e) {
     e.preventDefault();
     if(manipulation === 'plus') {
       setResult(currentValue + Number(inputRef.current.value));
@@ -63,15 +69,13 @@ function App() {
 
   function resetInput(e) {
     e.preventDefault();
-    inputRef.current.value = "";
-    setManipulation('');
+    clear();
   };
 
   function resetResult(e) {
     e.preventDefault();
     setResult(0);
-    inputRef.current.value = "";
-    setManipulation('');
+    clear();
   };
 
   return (
@@ -89,12 +93,13 @@ function App() {
           ref={inputRef}
           type="number"
           placeholder="Type a number"
+
         />
         <button onClick={plus}>add</button>
         <button onClick={minus}>subtract</button>
         <button onClick={times}>multiply</button>
         <button onClick={divide}>divide</button>
-        <button onClick={equel}>=</button>
+        <button onClick={equal}>=</button>
 
         <button onClick={resetInput}>resetInput</button>
         <button onClick={resetResult}>resetResult</button>
