@@ -18,6 +18,11 @@ function App() {
     inputRef.current.focus();
   }, [manipulation])
 
+  function clear(){
+    setManipulation('')
+    inputRef.current.value = '';
+  }
+
   function plus(e) {
     e.preventDefault();
     setCurrentValue(Number(inputRef.current.value));
@@ -53,16 +58,20 @@ function App() {
     } else if(manipulation === 'devide') {
       setResult(currentValue / Number(inputRef.current.value));
     }
+    clear();
   }
 
   function resetInput(e) {
     e.preventDefault();
     inputRef.current.value = "";
+    setManipulation('');
   };
 
   function resetResult(e) {
     e.preventDefault();
     setResult(0);
+    inputRef.current.value = "";
+    setManipulation('');
   };
 
   return (
