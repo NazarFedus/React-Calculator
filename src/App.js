@@ -1,6 +1,7 @@
 import {
   useState,
-  useRef
+  useRef,
+  useEffect
 } from "react";
 import "./App.css";
 
@@ -9,13 +10,19 @@ function App() {
   const resultRef = useRef(null);
   const [result, setResult] = useState(0);
 
+  useEffect(() => {
+    inputRef.current.value = '';
+  }, [result])
+
   function plus(e) {
     e.preventDefault();
     setResult((result) => result + Number(inputRef.current.value));
   };
 
   function minus(e) {
-  	// Add the code for the minus function
+    e.preventDefault();
+    setResult((result) => result - Number(inputRef.current.value));
+    inputRef.current.value = "";
   };
 
   function times(e) {
@@ -26,16 +33,14 @@ function App() {
     // Add the code for the divide function
   };
 
-  function equals(e) {
-
-  }
-
   function resetInput(e) {
-    // Add the code for the resetInput function
+    e.preventDefault();
+    inputRef.current.value = "";
   };
 
   function resetResult(e) {
-  	// Add the code for the resetResult function
+    e.preventDefault();
+    setResult(0);
   };
 
   return (
@@ -57,7 +62,6 @@ function App() {
         <button onClick={minus}>subtract</button>
         <button onClick={times}>multiply</button>
         <button onClick={divide}>divide</button>
-        <button onClick={equals}>=</button>
 
         <button onClick={resetInput}>resetInput</button>
         <button onClick={resetResult}>resetResult</button>
