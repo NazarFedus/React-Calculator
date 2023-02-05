@@ -89,9 +89,12 @@ function App() {
         <h1>Simplest Working Calculator</h1>
       </div>
       <form className="main">
-        <p ref={resultRef}>
+
+          <p ref={resultRef} style={{color: "white"}}>
           Result: {result}
         </p>
+
+
         <input
           pattern="[0-9]"
           ref={inputRef}
