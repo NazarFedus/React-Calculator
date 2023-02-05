@@ -16,8 +16,7 @@ button {
   background: whitesmoke;
   margin-right: 5px;
 }
-button:nth-last-child(2),
-button:nth-last-child(1) {
+.manipulations{
   background: tomato;
   color: white;
 }
@@ -26,4 +25,12 @@ button:nth-last-child(1) {
   flex-direction: column;
   align-items: center;
   margin-top: 50px;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  padding: 20px;
 }
