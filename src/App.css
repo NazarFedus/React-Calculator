@@ -21,3 +21,9 @@ button:nth-last-child(1) {
   background: tomato;
   color: white;
 }
+.App{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
