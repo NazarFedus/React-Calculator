@@ -17,6 +17,10 @@ function App() {
     inputRef.current.value = result;
   }, [result, inputRef])
 
+  useEffect(() => {
+    inputRef.current.value = '';
+  }, [manipulation])
+
 
   function clear(){
     setManipulation('')
@@ -27,28 +31,24 @@ function App() {
     e.preventDefault();
     setCurrentValue(Number(inputRef.current.value));
     setManipulation('plus')
-    inputRef.current.value = '';
   };
 
   function minus(e) {
     e.preventDefault();
     setCurrentValue(Number(inputRef.current.value));
     setManipulation('minus')
-    inputRef.current.value = '';
   };
 
   function times(e) {
     e.preventDefault();
     setCurrentValue(Number(inputRef.current.value));
     setManipulation('multiply')
-    inputRef.current.value = '';
   };
 
   function divide(e) {
     e.preventDefault();
     setCurrentValue(Number(inputRef.current.value));
     setManipulation('devide')
-    inputRef.current.value = '';
   };
 
   function equel(e) {
@@ -58,9 +58,9 @@ function App() {
     } else if(manipulation === 'minus') {
       setResult(currentValue - Number(inputRef.current.value));
     } else if(manipulation === 'multiply') {
-      setResult(currentValue * Number(inputRef.current.value));
+      setResult((currentValue * Number(inputRef.current.value)).toFixed(3));
     } else if(manipulation === 'devide') {
-      setResult(currentValue / Number(inputRef.current.value));
+      setResult((currentValue / Number(inputRef.current.value)).toFixed(3));
     }
   }
 
@@ -88,11 +88,10 @@ function App() {
       <div>
         <h1>Simplest Working Calculator</h1>
       </div>
-      <form>
+      <form className="main">
         <p ref={resultRef}>
           Result: {result}
         </p>
-        <p>Manipulation: {manipulation}</p>
         <input
           pattern="[0-9]"
           ref={inputRef}

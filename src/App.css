@@ -20,11 +20,13 @@ button {
   background: tomato;
   color: white;
 }
-.App{
+.main{
   display: flex;
   flex-direction: column;
+  display: fill-content;
+  border-radius: 20px;
   align-items: center;
-  margin-top: 50px;
+  background-color: #4e5e6a;
 }
 .container {
   display: flex;
